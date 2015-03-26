@@ -31,7 +31,7 @@ end
 get '/post/:id' do |id|
 	@posts = Post.all
 	@post = Post.find_by(id: id)
-	# @tags = Tag.where("post_id= id") 
+	@tags = @post.tags
 	erb :post
 end
 
@@ -41,5 +41,15 @@ post 'edit/:id' do |id|
 	@post.post = params[:post][:post]
 	@post.save
 
-	redirect to "/post/#{@post[:id]}"
+	redirect to "/post/edit/#{@post[:id]}"
 end
+
+post "delete/:id" do |id|
+	if session[:user_id] != nil
+		@post = Post.find_by(id: id)
+		@post.destroy
+	end
+
+	redirect to "/dashboard/#{session[:user_id]}"
+end
+

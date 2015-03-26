@@ -15,7 +15,9 @@
 
     <div class="container">
       <!-- Example row of columns -->
-      
+    <%@tags.each do |tag|%>
+    <p><%=tag.name%></p>
+    <%end%>      
 
       <hr>
 
