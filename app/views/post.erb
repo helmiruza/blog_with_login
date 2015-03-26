@@ -8,16 +8,13 @@
         <p><%=@post.post%></textarea></p><br>
         
           <!-- <textarea class="form-control" rows="1" name="tags[name]" placeholder="Tags, separated by commas"><%=@tags%></textarea><br> -->
-          
+        <b>Tags : </b><%@tags.each do |tag|%><a href=""><%=tag.name%> ,</a><%end%>  
         </div>
       </div>
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
-    <%@tags.each do |tag|%>
-    <p><%=tag.name%></p>
-    <%end%>      
+      <!-- Example row of columns -->      
 
       <hr>
 

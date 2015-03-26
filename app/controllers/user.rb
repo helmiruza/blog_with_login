@@ -36,3 +36,12 @@ post '/login' do
  	erb :login
  end
 end
+
+get '/dashboard' do
+	if session[:user_id] != nil
+		redirect to "/dashboard/#{@user.id}"
+	else
+		@errors = ["You must be logged in to view Dashboard Panel"]
+		erb :login
+	end
+end

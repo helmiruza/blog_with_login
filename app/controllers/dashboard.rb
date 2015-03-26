@@ -35,16 +35,23 @@ get '/post/:id' do |id|
 	erb :post
 end
 
-post 'edit/:id' do |id|
+get '/edit/:id' do |id|
 	@post = Post.find_by(id: id)
-	@post.title = params[:post][:title]
-	@post.post = params[:post][:post]
-	@post.save
-
-	redirect to "/post/edit/#{@post[:id]}"
+	erb :post_edit
 end
 
-post "delete/:id" do |id|
+post '/edit/:id' do |id|
+	if session[:user_id] != nil
+		@post = Post.find_by(id: id)
+		@post.title = params[:post][:title]
+		@post.post = params[:post][:post]
+		@post.save
+	end
+
+	redirect to "/dashboard/#{session[:user_id]}"
+end
+
+post "/delete/:id" do |id|
 	if session[:user_id] != nil
 		@post = Post.find_by(id: id)
 		@post.destroy

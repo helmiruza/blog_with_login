@@ -10,7 +10,7 @@
           <textarea class="form-control" rows="5" name="post[post]" placeholder="Your Post Here"></textarea><br>
           <textarea class="form-control" rows="1" name="tags[name]" placeholder="Tags, separated by commas"></textarea><br>
           <button type="submit" class="btn btn-primary btn-lg">Submit Post</a>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -18,14 +18,16 @@
 
       <table class="table table-hover">
         <tr>
-          <th>Your Posts</th>
+          <th>Posts</th>
+          <th>Edit</th>
           <th>Delete</th>
         </tr>
         <% if !@posts.nil? %>
         <% @posts.each do |post|%>
         <tr>
           <td><a href="/post/<%=post.id %>"><%=post.title %></a><p><%= post.post %></p></td>
-          <td><form action='delete/#{post.id}' method='post'><a href="">Delete</a></div></td>
+          <td><form action='/edit/<%=post.id %>' method='get'><input type="submit" class="btn btn-primary btn-sm" value='Edit'></form></td>
+          <td><form action='/delete/<%=post.id %>' method='post'><input type="submit" class="btn btn-danger btn-sm" value='Delete'></form></td>
         </tr>
         <% end %>
         <% end %>

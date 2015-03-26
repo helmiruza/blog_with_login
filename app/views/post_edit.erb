@@ -5,12 +5,12 @@
         <h1>Post Title : <%=@post.title%></h1>
         <p>You may create, edit and delete posts from here</p>
         <h2>Edit Post</h2>
-        <form action='edit/:id' method='post'>
+        <form action='/edit/<%= @post.id %>' method='post'>
           <textarea class="form-control" rows="2" name="post[title]" placeholder="Post Title"><%=@post.title%></textarea><br>
           <textarea class="form-control" rows="5" name="post[post]" placeholder="Your Post Here"><%=@post.post%></textarea><br>
           <!-- <textarea class="form-control" rows="1" name="tags[name]" placeholder="Tags, separated by commas"><%=@tags%></textarea><br> -->
-          <button type="submit" class="btn btn-primary btn-lg">Edit Post</button><%session[:user_id]%><a class="btn btn-primary btn-lg" href="../dashboard/:id" role="button">Admin Dashboard</a>
-        </div>
+          <button type="submit" class="btn btn-primary btn-lg">Edit Post</button>
+        </form>
       </div>
     </div>
 
