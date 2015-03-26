@@ -1,0 +1,37 @@
+<div class="container">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to my blog</h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" href="../register" role="button">Admin Register &raquo;</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <table class="table table-hover">
+
+      <tr>
+        <th>Posts</th>
+      </tr>
+      <% if !@posts.nil? %>
+      <% @posts.each do |post|%>
+      <tr>
+        <td><a href="/post/<%=post.id %>"><%=post.title %></a><p><%= post.post %></p></td>
+        
+      </tr>
+      <% end %>
+      <% end %>
+      <tr>
+  </table>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
+</div>
